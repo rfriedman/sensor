@@ -11,6 +11,8 @@ class sensor(object):
 		self.device =str
 	def setdevname(self,str):
 		self.devName = str
+	def setoutfile(self,str):
+		self.devName = str
 	def start(self):
 		call([self.proc, self.device, self.devName])
 
@@ -19,6 +21,7 @@ def a():
 	s2.setproc("/home/gngrbrd/dev/sensor/monitor")
 	s2.setdev("/home/gngrbrd/dev/scratch/sensor1.dat")
 	s2.setdevname("INPUT_1")
+	s2.setoutfile("/home/gngrbrd/sensor/log/input.dat")
 	s2.start()
 
 if __name__ == '__main__':

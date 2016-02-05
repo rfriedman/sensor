@@ -25,7 +25,7 @@ def execute_cmd(cmd_string):
 x = 0
 
 while x != ord('4'):
-	f = open("/home/gngrbrd/dev/scratch/myfile.txt","r")
+	f = open("/home/gngrbrd/dev/sensor/log/input.dat","r")
 	l = f.readlines()
 
 	screen = curses.initscr()

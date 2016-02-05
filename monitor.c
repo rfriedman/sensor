@@ -20,6 +20,8 @@ struct sensor_desc{
 struct deviceInput{
 	const char *input;
 	const char *inputName;
+	FILE 	*outFile;	
+	const char *outFileName;
 
 };
 
@@ -27,8 +29,9 @@ struct deviceInput{
 void init(char **args,struct deviceInput *devOut){
 	devOut->input = args[1];
 	devOut->inputName = args[2];
+	devOut->outFileName = args[3];
 
-	fprintf(stdout, "%s %s  \n",devOut->input, devOut->inputName);
+	fprintf(stdout, "%s %s  saving to:  %s\n",devOut->input, devOut->inputName,devOut->outFileName );
 
 }
 
@@ -43,39 +46,25 @@ void printstruct(void *var, int size){
 	}
 	printf("\n");
 }
-void lotto(struct sensor *outFile, FILE *pFile){
-	srand((unsigned) &outFile->data);
-	int i;
-	   for( i = 0 ; i < 6 ; i++ ) 
-   {
 
-      fprintf(pFile,"%d ",rand() % 55);
-      fprintf(stdout,"%d ",rand() % 55);
-
-   }      fprintf(pFile,"\n ");
-   		fprintf(stdout,"\n ");
-}
 void datalog(struct sensor *outFile, struct deviceInput *desc){
 
-	   FILE * pFile;
-	   FILE *pLog;
 	   struct tm *loctime;
 	   int n;
 	   char name [100];
 	   unsigned char *ch = (unsigned char*)&outFile->data;
 	   int i;
-	   if(pFile = fopen ("/home/gngrbrd/dev/scratch/myfile.txt","w")){
+	   if(desc->outFile = fopen (desc->outFileName,"w")){
 
 	   		loctime = localtime(&outFile->curtime);
-			fprintf(pFile,"%s %s\n",asctime(loctime),desc->inputName);
+			fprintf(desc->outFile,"%s %s\n",asctime(loctime),desc->inputName);
 			for(i = 0;i<sizeof(unsigned int);i++){
-				fprintf(pFile,"%#x ", (int)*ch );
+				fprintf(desc->outFile,"%#x ", (int)*ch );
 				ch++;
 			}
-			fprintf(pFile, "\n");
-			lotto(outFile,pFile);
+			fprintf(desc->outFile, "\n");
 
-			fclose(pFile);
+			fclose(desc->outFile);
  		
 	   }else{
 	   	perror("log");
