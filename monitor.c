@@ -67,7 +67,7 @@ void datalog(struct sensor *outFile, struct deviceInput *desc){
 			fclose(desc->outFile);
  		
 	   }else{
-	   	perror("log");
+	   	perror(desc->outFileName);
 	   }
 	}
 
