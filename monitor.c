@@ -4,7 +4,6 @@
 #include <fcntl.h>
 #include <time.h>
 #include <stdlib.h>
-#define INPUT_1 "/home/gngrbrd/dev/scratch/sensor.dat"
 
 struct sensor{
 	time_t curtime;
