@@ -4,8 +4,6 @@
 #include <fcntl.h>
 #include <time.h>
 #include <stdlib.h>
-#define INPUT_1 "/dev/urandom"
-#define OUTPUT_1 "/home/gngrbrd/dev/scratch/sensor.dat"
 
 struct deviceInput{
 	const char *input;
