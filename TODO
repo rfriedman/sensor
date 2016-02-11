@@ -1,0 +1,7 @@
+add functionality for JSON encoding/decoding 
+	write JSON to file 
+	read JSON from file
+	
+add functionality for TCP or UDP streaming
+
+add angular interface
